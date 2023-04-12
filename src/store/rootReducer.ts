@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-// import postsReducer from "./posts/reducer";
+import postsReducer from "./posts/reducer";
 
 const rootReducer = combineReducers({
-    // posts: postsReducer
+    posts: postsReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

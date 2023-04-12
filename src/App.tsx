@@ -1,5 +1,10 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+
+import { fetchPosts } from "./store/posts/actions";
+import { SortBy } from "./store/posts/types";
+
 import Home from './modules/Home';
 import Blog from './modules/Blog';
 import Navbar from "./components/Navbar";
@@ -9,11 +14,21 @@ import backgroundImage from "../public/background.png";
 import './App.scss';
 import { Routes as RoutesEnum } from "./constants/Routes";
 
+// props from connect mapDispatchToProps
+interface DispatchProps {
+  fetchPosts: (page: number, categoryId: number, sortBy?: SortBy, searchPhrase?: string) => Promise<void>;
+}
+
 interface AppState {
   isTitleAvailable: boolean
 }
 
-class App extends React.Component<{/* do-nothing */ }, AppState> {
+class App extends React.Component<DispatchProps, AppState> {
+  componentDidMount() {
+    const { fetchPosts } = this.props;
+    fetchPosts(1, 1);
+  }
+
   state = {
     isTitleAvailable: false
   };
@@ -54,4 +69,8 @@ class App extends React.Component<{/* do-nothing */ }, AppState> {
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  fetchPosts,
+};
+
+export default connect(null, mapDispatchToProps)(App);
