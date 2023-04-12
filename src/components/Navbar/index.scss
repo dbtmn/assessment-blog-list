@@ -1,0 +1,38 @@
+@import "../../scss/colors";
+
+.navbar {
+    &__wrapper {
+        font-size: 1.286rem;
+        font-weight: 600;
+
+        ul {
+            display: flex;
+            justify-content: end;
+            margin: unset;
+
+            :not(:last-child) {
+                margin-right: 2.222vw;
+            }
+        }
+
+        li {
+            list-style: none;
+
+            a {
+                color: $color-white;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__link {
+        &:hover {
+            color: $color-primary-orange;
+        }
+        &--active {
+            border-bottom: 2px solid $color-primary-orange;
+            padding-bottom: 0.556vw;
+            cursor: inherit;
+        }
+    }
+}

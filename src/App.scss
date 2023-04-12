@@ -1,0 +1,38 @@
+@import "./scss/colors";
+
+.app {
+  min-height: 100vh;
+  background-color: $color-raisin-black;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    height: 20.253vh;
+    padding: 2.222vw 11.25vw 0 11.25vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__logo {
+    width: 16.667vw;
+    height: auto;
+
+    &-wrapper {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-self: center;
+    margin-top: 1.667vw;
+    font-weight: 600;
+    font-size: 3.429rem;
+    color: $color-white;
+  }
+}
