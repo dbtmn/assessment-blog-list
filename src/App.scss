@@ -6,6 +6,16 @@
   display: flex;
   flex-direction: column;
 
+  &__container {
+    display: grid;
+    grid-template-areas:
+      "add items";
+    grid-template-columns: 5fr 7fr;
+    gap: 1.667vw;
+    padding: 4.444vw 11.250vw;
+    background-color: $color-lotion;
+  }
+
   &__header {
     display: flex;
     flex-direction: column;

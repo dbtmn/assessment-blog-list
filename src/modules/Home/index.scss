@@ -1,0 +1,14 @@
+@import "../../scss/colors";
+
+.home {
+    &__add-section {
+        background-color: $color-white;
+        grid-area: add;
+    }
+
+    &__items-section {
+        background-color: $color-white;
+        grid-area: items;
+
+    }
+}

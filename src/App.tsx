@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
 import Home from './modules/Home';
 import Blog from './modules/Blog';
 import Navbar from "./components/Navbar";
@@ -42,9 +41,9 @@ class App extends React.Component<{/* do-nothing */ }, AppState> {
                 </div>
                 {this.getTitle()}
               </div>
-              <Grid container marginLeft="11.250vw" marginRight="11.250vw">
+              <div className="app__container">
                 <Outlet />
-              </Grid>
+              </div>
             </div>}>
             <Route path={RoutesEnum.HOME} element={<Home />} />
             <Route path={RoutesEnum.BLOG} element={<Blog />} />
