@@ -21,7 +21,7 @@ export const fetchPosts = (page: number, categoryId: number, sortBy?: SortBy, se
     try {
         dispatch(fetchPostsRequest());
         return getPosts(page, categoryId, sortBy, searchPhrase).then((result) => {
-            dispatch(fetchPostsSuccess({ posts: result.data }));
+            dispatch(fetchPostsSuccess({ posts: result.data.data }));
         });
     } catch (err) {
         dispatch(fetchPostsFailure({ error: (err as AxiosError).message }));

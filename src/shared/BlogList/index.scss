@@ -1,0 +1,14 @@
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.667vw;
+    row-gap: 1.667vw;
+
+    .blog-item {
+        margin-right: 1.667vw;
+    }
+
+    :nth-child(2n) {
+        margin-right: unset;
+    }
+}
