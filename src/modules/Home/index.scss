@@ -1,6 +1,13 @@
 @import "../../scss/colors";
 
 .home {
+    &__wrapper {
+        display: grid;
+        grid-template-areas: "add items";
+        grid-template-columns: 5fr 7fr;
+        gap: 1.667vw;
+    }
+
     &__add-section {
         grid-area: add;
         background-color: $color-white;
@@ -10,6 +17,5 @@
         grid-area: items;
         min-height: 59vh;
         background-color: $color-white;
-
     }
 }

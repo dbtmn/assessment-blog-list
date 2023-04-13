@@ -1,18 +1,37 @@
 .blog-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 1.667vw;
+    &.small {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 1.667vw;
+
+        :nth-child(2n) {
+            margin-right: unset;
+        }
+    }
+
+    &.large {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 1.667vw;
+
+        .blog-item {
+            width: 18.125vw;
+
+            &__image {
+                width: 18.125vw;
+                height: 5vw;
+            }
+        }
+    }
 
     &__wrapper {
-        padding: 1.667vw;
+        &.small {
+            padding: 1.667vw;
+        }
     }
 
     .blog-item {
         margin-right: 1.667vw;
-    }
-
-    :nth-child(2n) {
-        margin-right: unset;
     }
 
     &__load-more {

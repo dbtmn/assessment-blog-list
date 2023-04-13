@@ -8,15 +8,22 @@ import BlogItem from "../BlogItem";
 
 import "./index.scss";
 
+export enum BlogListSize {
+    sm = "small",
+    lg = "large"
+}
+
 interface ComponentProps {
     pending: boolean;
     posts: Post[];
     error: string | null;
-    onLoadMore: () => void;
+    size?: BlogListSize;
+    isLoadMoreAvailable?: boolean;
+    onLoadMore?: () => void;
 }
 
 const BlogList: React.FunctionComponent<ComponentProps> = (props) => {
-    const { pending, posts, error, onLoadMore } = props;
+    const { pending, posts, error, size = BlogListSize.sm, isLoadMoreAvailable = false, onLoadMore = () => {/* do-nothing */ } } = props;
 
     const isError = !pending && error;
 
@@ -27,13 +34,13 @@ const BlogList: React.FunctionComponent<ComponentProps> = (props) => {
     return <>
         {pending && <Loading />}
         {isError && <Error size={ErrorSize.lg} message="There is an error!" />}
-        {!pending && !isEmpty(posts) && <div className="blog-list__wrapper">
-            <div className="blog-list">
+        {!pending && !isEmpty(posts) && <div className={`blog-list__wrapper ${size}`}>
+            <div className={`blog-list ${size}`}>
                 {posts.map((post: Post) =>
                     <BlogItem key={`blog-item-${post.id}`} post={post} />
                 )}
             </div>
-            <Button className="blog-list__load-more" onClick={() => loadMore()}>Load More</Button>
+            {isLoadMoreAvailable && <Button className="blog-list__load-more" onClick={() => loadMore()}>Load More</Button>}
         </div>}
     </>;
 }

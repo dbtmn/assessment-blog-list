@@ -23,14 +23,14 @@ import {
 } from "../filters/types";
 import { store } from "../../index";
 
-export const fetchPosts = (page: number, categoryId: number, sortBy?: SortBy, searchPhrase?: string) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
+export const fetchPosts = (categoryId: number, page?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
     try {
         const postsState: PostsState = store.getState().posts;
         const { posts } = postsState;
 
         (dispatch as DispatchPostsType)(fetchPostsRequest());
-        return getPosts(page, categoryId, sortBy, searchPhrase).then((result) => {
-            (dispatch as DispatchPostsType)(fetchPostsSuccess({ posts: [...posts, ...result.data.data] }));
+        return getPosts(categoryId, page, sortBy, searchPhrase).then((result) => {
+            (dispatch as DispatchPostsType)(fetchPostsSuccess({ posts: isLoadMore ? [...posts, ...result.data.data] : result.data.data }));
             (dispatch as DispatchFiltersType)({
                 type: SET_TOTAL_PAGE,
                 totalPage: result.data.last_page

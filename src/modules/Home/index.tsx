@@ -11,7 +11,7 @@ import "./index.scss";
 
 // props from connect mapDispatchToProps
 interface DispatchProps {
-    fetchPosts: (page: number, categoryId: number, sortBy?: SortBy, searchPhrase?: string) => Promise<void>;
+    fetchPosts: (categoryId: number, page?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => Promise<void>;
     setActivePage: (activePage: number) => void;
 }
 
@@ -34,26 +34,23 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     const { pending, posts, error } = postsState;
 
     useEffect(() => {
-        fetchPosts(1, 1);
+        fetchPosts(1);
     }, [fetchPosts]);
-
-    useEffect(() => {
-        fetchPosts(activePage, 1);
-    }, [fetchPosts, activePage]);
 
     // const isError = !pending && error;
 
     const loadMore = () => {
         setActivePage(activePage + 1);
+        fetchPosts(activePage + 1, undefined, undefined, undefined, true);
     };
 
-    return <>
+    return <div className="home__wrapper">
         <div className="home__add-section">Create a Blog Placeholder</div>
         {/* {pending && <Loading />}
         {isError && <Error size={ErrorSize.lg} message="There is an error!" />} */}
         {/* {isNoContent && <NoContent message="No data found :(" />} */}
-        <div className="home__items-section"><BlogList pending={pending} posts={posts} error={error} onLoadMore={loadMore} /></div>
-    </>;
+        <div className="home__items-section"><BlogList pending={pending} posts={posts} error={error} onLoadMore={loadMore} isLoadMoreAvailable /></div>
+    </div>;
 }
 
 const mapStateToProps = (state: AppState) => {
