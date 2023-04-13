@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { getPosts } from "../../api";
-import { SortBy } from "./types";
+import { PostsState, SortBy } from "./types";
 
 import {
     FETCH_POSTS_REQUEST,
@@ -17,14 +17,27 @@ import {
     FetchPostsFailure
 } from "./types";
 
-export const fetchPosts = (page: number, categoryId: number, sortBy?: SortBy, searchPhrase?: string) => async (dispatch: DispatchPostsType) => {
+import { SET_TOTAL_PAGE } from "../filters/actionTypes";
+import {
+    DispatchFiltersType
+} from "../filters/types";
+import { store } from "../../index";
+
+export const fetchPosts = (page: number, categoryId: number, sortBy?: SortBy, searchPhrase?: string) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
     try {
-        dispatch(fetchPostsRequest());
+        const postsState: PostsState = store.getState().posts;
+        const { posts } = postsState;
+
+        (dispatch as DispatchPostsType)(fetchPostsRequest());
         return getPosts(page, categoryId, sortBy, searchPhrase).then((result) => {
-            dispatch(fetchPostsSuccess({ posts: result.data.data }));
+            (dispatch as DispatchPostsType)(fetchPostsSuccess({ posts: [...posts, ...result.data.data] }));
+            (dispatch as DispatchFiltersType)({
+                type: SET_TOTAL_PAGE,
+                totalPage: result.data.last_page
+            });
         });
     } catch (err) {
-        dispatch(fetchPostsFailure({ error: (err as AxiosError).message }));
+        (dispatch as DispatchPostsType)(fetchPostsFailure({ error: (err as AxiosError).message }));
         return Promise.reject(err);
     }
 };

@@ -2,13 +2,14 @@
 
 .home {
     &__add-section {
-        background-color: $color-white;
         grid-area: add;
+        background-color: $color-white;
     }
 
     &__items-section {
-        background-color: $color-white;
         grid-area: items;
+        min-height: 59vh;
+        background-color: $color-white;
 
     }
 }
