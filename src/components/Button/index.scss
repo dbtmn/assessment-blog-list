@@ -1,9 +1,39 @@
+@import "../../scss/colors";
+
 .button {
     &__wrapper {
-
         button {
-            &:hover {
+            border-radius: 20px;
+            color: $color-white;
+
+            &:hover:not(&:disabled) {
                 cursor: pointer;
+            }
+
+            &:disabled {
+                opacity: 0.5;
+            }
+
+            &[class~="small"] {
+                padding: 0.278vw 0.833vw;
+                font-weight: 400;
+                font-size: 0.714rem;
+            }
+
+            &[class~="large"] {
+                padding: 0.694vw 3.194vw;
+                font-weight: 600;
+                font-size: 0.857rem;
+            }
+
+            &[class~="orange"] {
+                background-color: $color-secondary-orange;
+                border: 2px solid $color-secondary-orange;
+            }
+
+            &[class~="gray"] {
+                background-color: $color-secondary-light-gray;
+                border: 2px solid $color-secondary-light-gray;
             }
         }
     }

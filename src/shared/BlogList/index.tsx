@@ -27,11 +27,13 @@ const BlogList: React.FunctionComponent<ComponentProps> = (props) => {
     return <>
         {pending && <Loading />}
         {isError && <Error size={ErrorSize.lg} message="There is an error!" />}
-        {!pending && !isEmpty(posts) && <div className="blog-list">
-            {posts.map((post: Post) =>
-                <BlogItem key={`blog-item-${post.id}`} post={post} />
-            )}
-            <Button className="blog-item__load-more" onClick={() => loadMore()}>Load More!</Button>
+        {!pending && !isEmpty(posts) && <div className="blog-list__wrapper">
+            <div className="blog-list">
+                {posts.map((post: Post) =>
+                    <BlogItem key={`blog-item-${post.id}`} post={post} />
+                )}
+            </div>
+            <Button className="blog-list__load-more" onClick={() => loadMore()}>Load More</Button>
         </div>}
     </>;
 }
