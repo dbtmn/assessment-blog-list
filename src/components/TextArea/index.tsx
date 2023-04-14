@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 
 import "./index.scss";
 
-interface InputProps {
+interface TextAreaProps {
     id?: string;
     className?: string;
-    placeholder?: string;
     labelText: string;
     isClear: boolean;
     onChange: (value: string) => void;
 }
 
-const InputBox: React.FunctionComponent<InputProps> = (props) => {
-    const { id = "inputbox", className = "", placeholder = "", labelText, isClear, onChange } = props;
+const TextArea: React.FunctionComponent<TextAreaProps> = (props) => {
+    const { id = "texratea", className = "", labelText, isClear, onChange } = props;
 
     const [inputValue, setInput] = useState<string>("");
 
@@ -22,15 +21,15 @@ const InputBox: React.FunctionComponent<InputProps> = (props) => {
         }
     }, [isClear]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInput(e.target.value as string);
         onChange(e.target.value as string);
     }
 
-    return <div className={`${className} input-box__wrapper`}>
+    return <div className={`${className} text-area__wrapper`}>
         <label id={id}>{labelText}</label>
-        <input id={id} placeholder={placeholder} value={inputValue} onChange={handleChange} />
+        <textarea id={id} value={inputValue} onChange={handleChange} />
     </div>
 }
 
-export default InputBox;
+export default TextArea;

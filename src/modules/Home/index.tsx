@@ -6,6 +6,9 @@ import { fetchPosts } from "../../store/posts/actions";
 import { FilterState } from "../../store/filters/types";
 import { PostsState, SortBy } from "../../store/posts/types";
 import BlogList from "../../shared/BlogList";
+import Dropdown from "../../components/Dropdown";
+import InputBox from "../../components/InputBox";
+import TextArea from "../../components/TextArea";
 
 import "./index.scss";
 
@@ -45,11 +48,14 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     };
 
     return <div className="home__wrapper">
-        <div className="home__add-section">Create a Blog Placeholder</div>
-        {/* {pending && <Loading />}
-        {isError && <Error size={ErrorSize.lg} message="There is an error!" />} */}
-        {/* {isNoContent && <NoContent message="No data found :(" />} */}
-        <div className="home__items-section"><BlogList pending={pending} posts={posts} error={error} onLoadMore={loadMore} isLoadMoreAvailable /></div>
+        <div className="home__add-section">
+            <InputBox placeholder="Geen titel" labelText="Berichtnaam" isClear={false} onChange={(inp) => console.log(inp)} />
+            <TextArea labelText="Bericht" isClear={false} onChange={(inp) => console.log(inp)} />
+            <Dropdown labelText="Categorie" onChange={(selection) => console.log(selection)} />
+        </div>
+        <div className="home__items-section">
+            <BlogList pending={pending} posts={posts} error={error} onLoadMore={loadMore} isLoadMoreAvailable />
+        </div>
     </div>;
 }
 

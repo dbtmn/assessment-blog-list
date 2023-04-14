@@ -1,6 +1,6 @@
 @import "../../scss/colors";
 
-.input-box {
+.text-area {
     &__wrapper {
         display: flex;
         flex-direction: column;
@@ -11,18 +11,14 @@
             color: $color-secondary-gray;
         }
 
-        input {
+        textarea {
+            min-height: 14.861vw;
             padding: 0.833vw 1.111vw;
-            background-color: $color-lotion;
-            border: none;
             font-family: "Inter";
             font-size: 0.857rem;
-
-            &::placeholder {
-                color: $color-fifth-light-gray;
-                font-size: 0.857rem;
-                font-style: italic;
-            }
+            background-color: $color-lotion;
+            border: none;
+            resize: vertical;
         }
     }
 }
