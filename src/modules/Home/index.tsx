@@ -6,9 +6,7 @@ import { fetchPosts } from "../../store/posts/actions";
 import { FilterState } from "../../store/filters/types";
 import { PostsState, SortBy } from "../../store/posts/types";
 import BlogList from "../../shared/BlogList";
-import Dropdown from "../../components/Dropdown";
-import InputBox from "../../components/InputBox";
-import TextArea from "../../components/TextArea";
+import CreatePost from "../../shared/CreatePost";
 
 import "./index.scss";
 
@@ -40,8 +38,6 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
         fetchPosts(1, 1);
     }, [fetchPosts]);
 
-    // const isError = !pending && error;
-
     const loadMore = () => {
         setActivePage(activePage + 1);
         fetchPosts(1, activePage + 1, undefined, undefined, undefined, true);
@@ -49,9 +45,7 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
 
     return <div className="home__wrapper">
         <div className="home__add-section">
-            <InputBox placeholder="Geen titel" labelText="Berichtnaam" isClear={false} onChange={(inp) => console.log(inp)} />
-            <TextArea labelText="Bericht" isClear={false} onChange={(inp) => console.log(inp)} />
-            <Dropdown labelText="Categorie" onChange={(selection) => console.log(selection)} />
+            <CreatePost />
         </div>
         <div className="home__items-section">
             <BlogList pending={pending} posts={posts} error={error} onLoadMore={loadMore} isLoadMoreAvailable />

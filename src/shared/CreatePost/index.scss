@@ -1,0 +1,23 @@
+@import "../../scss/colors";
+
+.create-post {
+    &__title {
+        margin-top: unset;
+        font-weight: 600;
+        font-size: 1.714rem;
+        color: $color-primary-gray;
+    }
+
+    &__title,
+    &__input,
+    &__text-area,
+    &__dropdown {
+        margin-bottom: 1.667vw;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}

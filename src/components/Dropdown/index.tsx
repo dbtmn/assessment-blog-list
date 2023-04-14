@@ -8,7 +8,7 @@ interface DropdownProps {
     id?: string;
     className?: string;
     labelText: string;
-    onChange: (value: DropdownItem) => void;
+    onChange: (value: number) => void;
 }
 
 interface DropdownItem {
@@ -40,7 +40,7 @@ const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
     const handleChange = (option: DropdownItem) => {
         setListOpen(false);
         setInput(option);
-        onChange(option);
+        onChange(option.id);
     }
 
     const handleClickInput = () => {
