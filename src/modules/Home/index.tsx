@@ -11,7 +11,7 @@ import "./index.scss";
 
 // props from connect mapDispatchToProps
 interface DispatchProps {
-    fetchPosts: (categoryId: number, page?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => Promise<void>;
+    fetchPosts: (categoryId: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => Promise<void>;
     setActivePage: (activePage: number) => void;
 }
 
@@ -34,14 +34,14 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     const { pending, posts, error } = postsState;
 
     useEffect(() => {
-        fetchPosts(1);
+        fetchPosts(1, 1);
     }, [fetchPosts]);
 
     // const isError = !pending && error;
 
     const loadMore = () => {
         setActivePage(activePage + 1);
-        fetchPosts(activePage + 1, undefined, undefined, undefined, true);
+        fetchPosts(activePage + 1, undefined, undefined, undefined, undefined, true);
     };
 
     return <div className="home__wrapper">

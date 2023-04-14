@@ -24,7 +24,7 @@
         }
     }
 
-    &__wrapper {
+    &__list-wrapper {
         &.small {
             padding: 1.667vw;
         }
@@ -41,5 +41,9 @@
             width: 100%;
             margin-top: 7.917vw;
         }
+    }
+
+    &__pagination {
+        margin-top: 1.667vw;
     }
 }
