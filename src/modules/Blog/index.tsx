@@ -10,7 +10,7 @@ import BlogList, { BlogListSize } from "../../shared/BlogList";
 import "./index.scss";
 
 interface DispatchProps {
-    fetchPosts: (categoryId: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => Promise<void>;
+    fetchPosts: (categoryId?: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => Promise<void>;
     setActivePage: (activePage: number) => void;
 }
 
@@ -30,12 +30,12 @@ const Blog: React.FunctionComponent<BlogProps> = (props) => {
     const { pending, posts, error } = postsState;
 
     useEffect(() => {
-        fetchPosts(1, 1, 8);
+        fetchPosts(undefined, 1, 8);
     }, [fetchPosts]);
 
     const changePage = (activePage: number) => {
         setActivePage(activePage);
-        fetchPosts(1, activePage, 8);
+        fetchPosts(undefined, activePage, 8);
     }
 
     return <BlogList

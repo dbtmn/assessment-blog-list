@@ -44,7 +44,7 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
 
     const loadMore = () => {
         setActivePage(activePage + 1);
-        fetchPosts(activePage + 1, undefined, undefined, undefined, undefined, true);
+        fetchPosts(1, activePage + 1, undefined, undefined, undefined, true);
     };
 
     return <div className="home__wrapper">

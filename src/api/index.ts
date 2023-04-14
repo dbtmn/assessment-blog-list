@@ -8,9 +8,17 @@ const config = {
     }
 };
 
-export const getPosts = async (categoryId: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string) => {
+export const getPosts = async (categoryId?: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string) => {
     const url = "https://frontend-case-api.sbdev.nl/api";
-    const path = `/posts?page=${page || 1}&perPage=${perPage || 4}&sortBy=${sortBy || SortBy.title}&sortDirection=asc&searchPhrase=${searchPhrase || ""}&categoryId=${categoryId}`;
+
+    const paramPage = `page=${page || 1}`;
+    const paramPerPage = `perPage=${perPage || 4}`;
+    const paramSortBy = `sortBy=${sortBy || SortBy.created}`;
+    const paramSortDirection = "sortDirection=desc";
+    const paramSearchPhrase = searchPhrase ? `&searchPhrase=${searchPhrase}` : "";
+    const paramCategoryId = categoryId ? `&categoryId=${categoryId}` : "";
+
+    const path = `/posts?${paramPage}&${paramPerPage}&${paramSortBy}&${paramSortDirection}${paramSearchPhrase}${paramCategoryId}`;
 
     return axios.get(`${url}${path}`, config);
 }

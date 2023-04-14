@@ -48,7 +48,7 @@ const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
     }
 
     const getListIcon = () => {
-        return <Icon iconName={isListOpen ? "keyboard_arrow_down" : "keyboard_arrow_up"} />;
+        return <Icon iconName={isListOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"} />;
     };
 
     return (

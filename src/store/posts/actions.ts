@@ -23,7 +23,7 @@ import {
 } from "../filters/types";
 import { store } from "../../index";
 
-export const fetchPosts = (categoryId: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
+export const fetchPosts = (categoryId?: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
     try {
         const postsState: PostsState = store.getState().posts;
         const { posts } = postsState;
