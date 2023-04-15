@@ -19,11 +19,11 @@ interface ButtonProps {
     size?: ButtonSize;
     variant?: ButtonVariant;
     isDisabled?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const Button: React.FunctionComponent<ButtonProps> = (props) => {
-    const { className = "", dataTestId, children, size = ButtonSize.lg, variant = ButtonVariant.primary, isDisabled = false, onClick } = props;
+    const { className = "", dataTestId, children, size = ButtonSize.lg, variant = ButtonVariant.primary, isDisabled = false, onClick = () => {/* do-nothing */ } } = props;
 
     const handleClick = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();

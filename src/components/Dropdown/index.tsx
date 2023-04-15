@@ -9,6 +9,7 @@ interface DropdownProps {
     className?: string;
     labelText: string;
     data: DropdownItem[];
+    isClear: boolean;
     onChange: (value: number) => void;
 }
 
@@ -19,10 +20,16 @@ export interface DropdownItem {
 }
 
 const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
-    const { id = "dropdown", className = "", labelText, data, onChange } = props;
+    const { id = "dropdown", className = "", labelText, data, isClear, onChange } = props;
     const refList = useRef<HTMLDivElement>(null);
     const [inputValue, setInput] = useState<DropdownItem>({} as unknown as DropdownItem);
     const [isListOpen, setListOpen] = useState(false);
+
+    useEffect(() => {
+        if (isClear) {
+            setInput({} as unknown as DropdownItem);
+        }
+    }, [isClear]);
 
     useEffect(() => {
         const checkIfClickedOutside = (e: MouseEvent) => {

@@ -1,0 +1,44 @@
+@import "../../scss/colors";
+
+.image-picker {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        label[class="image-picker__label"] {
+            margin-bottom: 0.556vw;
+            font-size: 0.857rem;
+            color: $color-secondary-gray;
+        }
+    }
+
+    &__input-wrapper {
+        width: 10.139vw;
+        padding: 0.694vw 1.111vw;
+        background-color: $color-lotion;
+
+        span {
+            font-size: 0.929rem;
+            color: $color-primary-light-gray;
+        }
+    }
+
+    &__input {
+        padding: 0.278vw 0.833vw;
+        margin-left: 1.07vw;
+        border-radius: 20px;
+        background-color: $color-secondary-light-gray;
+        color: $color-white;
+        font-weight: 400;
+        font-size: 0.714rem;
+    }
+
+    &__area {
+        display: flex;
+        align-items: center;
+    }
+
+    &__file-name {
+        margin-left: 1.07vw;
+    }
+}

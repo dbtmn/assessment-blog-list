@@ -45,9 +45,13 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
         fetchPosts(1, activePage + 1, undefined, undefined, undefined, true);
     };
 
+    const refreshPosts = () => {
+        fetchPosts(1, 1);
+    };
+
     return <div className="home__wrapper">
         <div className="home__add-section">
-            <CreatePost pending={categoriesPending} categories={categories} error={categoriesError} />
+            <CreatePost pending={categoriesPending} categories={categories} error={categoriesError} onRefreshPosts={refreshPosts} />
         </div>
         <div className="home__items-section">
             <BlogList pending={postsPending} posts={posts} error={postsError} onLoadMore={loadMore} isLoadMoreAvailable />
