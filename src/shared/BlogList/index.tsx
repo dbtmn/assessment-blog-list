@@ -51,36 +51,38 @@ const BlogList: React.FunctionComponent<ComponentProps> = (props) => {
     return <div className={`${listClassName}`}>
         {pending && <Loading />}
         {isError && <Error size={ErrorSize.lg} message="There is an error!" />}
-        {!pending && !isEmpty(posts) && <div className={`blog-list__list-wrapper ${size}`}>
-            <div className={`blog-list ${size}`}>
-                {posts.map((post: Post) =>
-                    <BlogItem key={`blog-item-${post.id}`} post={post} />
-                )}
+        {!pending && !isEmpty(posts) && <>
+            <div className={`blog-list__list-wrapper ${size}`}>
+                <div className={`blog-list ${size}`}>
+                    {posts.map((post: Post) =>
+                        <BlogItem key={`blog-item-${post.id}`} post={post} />
+                    )}
+                </div>
+                {isPaginationAvailable && <Pagination
+                    className="blog-list__pagination"
+                    sx={{
+                        justifyContent: 'center',
+                        display: 'flex'
+                    }}
+                    page={activePage}
+                    count={totalPage}
+                    hideNextButton={isHideNext}
+                    hidePrevButton={isHidePrevious}
+                    renderItem={(item) => (
+                        <PaginationItem
+                            sx={PaginationItemStyle}
+                            components={{
+                                previous: ArrowBackIcon,
+                                next: ArrowForwardIcon
+                            }}
+                            {...item}
+                        />
+                    )}
+                    onChange={(e, value) => changePage(value)}
+                />}
             </div>
             {isLoadMoreAvailable && <Button className="blog-list__load-more" onClick={() => loadMore()}>Load More</Button>}
-            {isPaginationAvailable && <Pagination
-                className="blog-list__pagination"
-                sx={{
-                    justifyContent: 'center',
-                    display: 'flex'
-                }}
-                page={activePage}
-                count={totalPage}
-                hideNextButton={isHideNext}
-                hidePrevButton={isHidePrevious}
-                renderItem={(item) => (
-                    <PaginationItem
-                        sx={PaginationItemStyle}
-                        components={{
-                            previous: ArrowBackIcon,
-                            next: ArrowForwardIcon
-                        }}
-                        {...item}
-                    />
-                )}
-                onChange={(e, value) => changePage(value)}
-            />}
-        </div>}
+        </>}
     </div>;
 }
 

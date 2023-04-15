@@ -1,3 +1,5 @@
+@import "../../scss/colors";
+
 .blog-list {
     &.small {
         display: grid;
@@ -27,6 +29,22 @@
     &__list-wrapper {
         &.small {
             padding: 1.667vw;
+            height: 60vh;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            &::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px $color-secondary-gray;
+                border-radius: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $color-secondary-light-gray;
+                border-radius: 5px;
+            }
         }
     }
 
@@ -39,7 +57,7 @@
             display: flex;
             justify-content: center;
             width: 100%;
-            margin-top: 7.917vw;
+            margin-bottom: 1.667vw;
         }
     }
 

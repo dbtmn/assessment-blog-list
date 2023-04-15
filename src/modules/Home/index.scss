@@ -10,7 +10,7 @@
 
     &__add-section {
         grid-area: add;
-        height: 42.5vw;
+        height: fit-content;
         padding: 1.667vw;
         background-color: $color-white;
     }
@@ -19,5 +19,12 @@
         grid-area: items;
         min-height: 59vh;
         background-color: $color-white;
+    }
+
+    &__blog-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
     }
 }

@@ -41,20 +41,45 @@ const Home: React.FunctionComponent<HomeProps> = (props) => {
     }, [fetchCategories, fetchPosts]);
 
     const loadMore = () => {
+        saveScrollPosition();
         setActivePage(activePage + 1);
-        fetchPosts(1, activePage + 1, undefined, undefined, undefined, true);
+        fetchPosts(1, activePage + 1, undefined, undefined, undefined, true).then(() => {
+            goToScrollPosition();
+        });
     };
 
     const refreshPosts = () => {
         fetchPosts(1, 1);
     };
 
+    const saveScrollPosition = () => {
+        const listElement = document.getElementsByClassName("blog-list__list-wrapper small")[0];
+        const positionY = listElement.scrollTop;
+
+        if (sessionStorage.scrollPosition) {
+            sessionStorage.scrollPosition = `${positionY}`;
+        } else {
+            sessionStorage.setItem("scrollPosition", `${positionY}`);
+        }
+
+    }
+
+    const goToScrollPosition = () => {
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            const listElement = document.getElementsByClassName("blog-list__list-wrapper small")[0];
+
+            listElement.scrollTo(0, parseInt(scrollPosition));
+            sessionStorage.removeItem("scrollPosition");
+        }
+    }
+
     return <div className="home__wrapper">
         <div className="home__add-section">
             <CreatePost pending={categoriesPending} categories={categories} error={categoriesError} onRefreshPosts={refreshPosts} />
         </div>
         <div className="home__items-section">
-            <BlogList pending={postsPending} posts={posts} error={postsError} onLoadMore={loadMore} isLoadMoreAvailable />
+            <BlogList listClassName="home__blog-list" pending={postsPending} posts={posts} error={postsError} onLoadMore={loadMore} isLoadMoreAvailable />
         </div>
     </div>;
 }
