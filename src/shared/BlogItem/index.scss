@@ -10,8 +10,21 @@
     }
 
     &__image {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
         width: 19.792vw;
         height: 5vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-style: italic;
+        font-size: 0.571rem;
+
+        > * {
+            padding: 0.556vw 1.111vw;
+            color: $color-white;
+        }
     }
 
     &__content {

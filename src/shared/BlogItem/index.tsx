@@ -10,12 +10,20 @@ interface ComponentProps {
 
 const BlogItem: React.FunctionComponent<ComponentProps> = (props) => {
     const { post } = props;
+    const { created_at, title, content, img_url, category } = post;
+    const { name } = category;
+    const dateData = new Date(created_at || 0);
+
+    const dateLabel = `${dateData.getMonth() + 1}-${dateData.getDate()}-${dateData.getFullYear()}`;
 
     return <div className="blog-item">
-        <img className="blog-item__image" src={`${IMG_STORAGE_BASE}${post.img_url}`} />
-        <div  className="blog-item__content">
-            <h2>{post.title}</h2>
-            <div>{post.content}</div>
+        <div className="blog-item__image" style={{ backgroundImage: `url(${IMG_STORAGE_BASE}${img_url})` }}>
+            <span>{dateLabel}</span>
+            <span>{name}</span>
+        </div>
+        <div className="blog-item__content">
+            <h2>{title}</h2>
+            <div>{content}</div>
         </div>
     </div>
 };
