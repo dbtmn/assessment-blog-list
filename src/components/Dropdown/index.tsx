@@ -8,17 +8,18 @@ interface DropdownProps {
     id?: string;
     className?: string;
     labelText: string;
+    data: DropdownItem[];
     onChange: (value: number) => void;
 }
 
-interface DropdownItem {
+export interface DropdownItem {
     id: number;
     value: string;
     label: string;
 }
 
 const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
-    const { id = "dropdown", className = "", labelText, onChange } = props;
+    const { id = "dropdown", className = "", labelText, data, onChange } = props;
     const refList = useRef<HTMLDivElement>(null);
     const [inputValue, setInput] = useState<DropdownItem>({} as unknown as DropdownItem);
     const [isListOpen, setListOpen] = useState(false);
@@ -63,7 +64,7 @@ const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
                 </div>
                 {isListOpen && (
                     <div className="dropdown__menu">
-                        {[{ id: 0, value: "lorem", label: "Lorem" }, { id: 1, value: "ipsum", label: "Ipsum" }].map((option: DropdownItem) => (
+                        {data.map((option: DropdownItem) => (
                             <div key={option.id} className="dropdown__item-wrapper">
                                 <div
                                     onClick={() => handleChange(option)}

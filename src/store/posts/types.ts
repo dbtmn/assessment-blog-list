@@ -4,6 +4,8 @@ import {
     FETCH_POSTS_FAILURE
 } from "./actionTypes";
 
+import { Category } from "../categories/types";
+
 export enum SortBy {
     created = "created_at",
     title = "title"
@@ -12,13 +14,6 @@ export enum SortBy {
 export enum SortDirection {
     asc = "asc",
     desc = "desc"
-}
-
-export interface Category {
-    id: number;
-    name: string;
-    created_at: string | null;
-    updated_at: string | null;
 }
 
 export interface Post {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_BASE } from "../constants/ApiUrl";
 import { SortBy } from "../store/posts/types";
 
 const config = {
@@ -9,8 +10,6 @@ const config = {
 };
 
 export const getPosts = async (categoryId?: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string) => {
-    const url = "https://frontend-case-api.sbdev.nl/api";
-
     const paramPage = `page=${page || 1}`;
     const paramPerPage = `perPage=${perPage || 4}`;
     const paramSortBy = `sortBy=${sortBy || SortBy.created}`;
@@ -20,5 +19,12 @@ export const getPosts = async (categoryId?: number, page?: number, perPage?: num
 
     const path = `/posts?${paramPage}&${paramPerPage}&${paramSortBy}&${paramSortDirection}${paramSearchPhrase}${paramCategoryId}`;
 
-    return axios.get(`${url}${path}`, config);
+    return axios.get(`${API_BASE}${path}`, config);
 }
+
+export const getCategories = async () => {
+
+    const path = `/categories`;
+
+    return axios.get(`${API_BASE}${path}`, config);
+};
