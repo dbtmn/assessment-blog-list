@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 import Home from './modules/Home';
 import Blog from './modules/Blog';
@@ -30,7 +30,6 @@ class App extends React.Component<{/* do-nothing */}, AppState> {
 
   render() {
     return (
-      <BrowserRouter>
         <Routes>
           <Route
             element={<div className="app">
@@ -49,7 +48,6 @@ class App extends React.Component<{/* do-nothing */}, AppState> {
             <Route path={RoutesEnum.BLOG} element={<Blog />} />
           </Route>
         </Routes>
-      </BrowserRouter>
     );
   }
 }
