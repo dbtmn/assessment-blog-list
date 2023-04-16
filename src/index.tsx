@@ -1,20 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import rootReducer from "./store/rootReducer";
+
+import { store } from "./store/store";
 
 import "./index.css";
 import "./style.scss";
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <Provider store={store}>

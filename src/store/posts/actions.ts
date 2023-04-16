@@ -21,7 +21,7 @@ import { SET_TOTAL_PAGE } from "../filters/actionTypes";
 import {
     DispatchFiltersType
 } from "../filters/types";
-import { store } from "../../index";
+import { store } from "../store";
 
 export const fetchPosts = (categoryId?: number, page?: number, perPage?: number, sortBy?: SortBy, searchPhrase?: string, isLoadMore?: boolean) => async (dispatch: DispatchPostsType | DispatchFiltersType) => {
     try {
