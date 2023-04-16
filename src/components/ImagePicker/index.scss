@@ -31,6 +31,10 @@
         color: $color-white;
         font-weight: 400;
         font-size: 0.714rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__area {
