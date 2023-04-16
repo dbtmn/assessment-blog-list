@@ -30,8 +30,9 @@ const Blog: React.FunctionComponent<BlogProps> = (props) => {
     const { pending, posts, error } = postsState;
 
     useEffect(() => {
+        setActivePage(1);
         fetchPosts(undefined, 1, 8);
-    }, [fetchPosts]);
+    }, [setActivePage, fetchPosts]);
 
     const changePage = (activePage: number) => {
         setActivePage(activePage);
