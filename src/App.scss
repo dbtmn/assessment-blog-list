@@ -7,7 +7,7 @@
   flex-direction: column;
 
   &__container {
-    padding: 4.444vw 11.250vw;
+    padding: 4.444vw 11.25vw;
     background-color: $color-lotion;
   }
 
@@ -39,5 +39,11 @@
     font-weight: 600;
     font-size: 3.429rem;
     color: $color-white;
+  }
+
+  @media (max-width: 1080px) {
+    &__container {
+      padding: 4.444vw 6.25vw;
+    }
   }
 }

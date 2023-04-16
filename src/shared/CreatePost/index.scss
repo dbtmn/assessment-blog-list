@@ -21,4 +21,12 @@
         justify-content: center;
         width: 100%;
     }
+
+    @media (max-width: 1080px) {
+        &__text-area {
+            textarea {
+                min-height: 9vw;
+            }
+        }
+    }
 }

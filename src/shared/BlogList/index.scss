@@ -29,7 +29,7 @@
     &__list-wrapper {
         &.small {
             padding: 1.667vw;
-            height: 60vh;
+            height: 50vh;
             overflow-y: auto;
 
             &::-webkit-scrollbar {
@@ -57,11 +57,36 @@
             display: flex;
             justify-content: center;
             width: 100%;
+            margin-top: 1.667vw;
             margin-bottom: 1.667vw;
         }
     }
 
     &__pagination {
         margin-top: 1.667vw;
+    }
+
+    @media (max-width: 1080px) {
+        &.small {
+            grid-template-columns: repeat(1, 1fr);
+
+            .blog-item {
+                width: 30vw;
+                justify-self: center;
+
+                &__image {
+                    width: 30vw;
+                    height: 5vw;
+                }
+            }
+
+            :nth-child(2n) {
+                margin-right: 1.1vw;
+            }
+        }
+
+        .blog-item {
+            margin-right: 1.1vw;
+        }
     }
 }

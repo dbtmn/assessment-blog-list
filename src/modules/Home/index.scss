@@ -10,14 +10,14 @@
 
     &__add-section {
         grid-area: add;
-        height: fit-content;
+        height: 59.5vh;
         padding: 1.667vw;
         background-color: $color-white;
     }
 
     &__items-section {
         grid-area: items;
-        min-height: 59vh;
+        height: 64.175vh;
         background-color: $color-white;
     }
 
@@ -26,5 +26,14 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+
+        .loading__wrapper {
+            padding-top: 1.667vw;
+        }
+    }
+    @media (max-height: 1027px) {
+        &__add-section, &__items-section {
+            height: 100%;
+        }
     }
 }

@@ -45,4 +45,10 @@
     &__file-name {
         margin-left: 1.07vw;
     }
+
+    @media (max-width: 1080px) {
+        &__input-wrapper {
+            width: 45%;
+        }
+    }
 }
