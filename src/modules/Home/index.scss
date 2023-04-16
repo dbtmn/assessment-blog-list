@@ -5,19 +5,18 @@
         display: grid;
         grid-template-areas: "add items";
         grid-template-columns: 5fr 7fr;
+        min-height: 64.167vh;
         gap: 1.667vw;
     }
 
     &__add-section {
         grid-area: add;
-        height: 59.5vh;
         padding: 1.667vw;
         background-color: $color-white;
     }
 
     &__items-section {
         grid-area: items;
-        height: 64.175vh;
         background-color: $color-white;
     }
 
@@ -32,7 +31,7 @@
         }
     }
     @media (max-height: 1027px) {
-        &__add-section, &__items-section {
+        &__items-section {
             height: 100%;
         }
     }

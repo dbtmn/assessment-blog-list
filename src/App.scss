@@ -41,7 +41,13 @@
     color: $color-white;
   }
 
-  @media (max-width: 1080px) {
+  @media (min-width: 800px) and (max-width: 1080px) {
+    &__container {
+      padding: 4.444vw;
+    }
+  }
+
+  @media (min-width: 1080px) {
     &__container {
       padding: 4.444vw 6.25vw;
     }

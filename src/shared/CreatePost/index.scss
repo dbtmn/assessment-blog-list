@@ -1,6 +1,12 @@
 @import "../../scss/colors";
 
 .create-post {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     &__title {
         margin-top: unset;
         font-weight: 600;

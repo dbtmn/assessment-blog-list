@@ -93,14 +93,16 @@ const CreatePost: React.FunctionComponent<CreatePostProps> = (props) => {
     return <>
         {pending && <Loading />}
         {isError && <Error size={ErrorSize.lg} message="There is an error!" />}
-        {!pending && !isEmpty(categories) && <>
-            <h2 className="create-post__title">Plaats een blog bericht</h2>
-            <InputBox className="create-post__input" placeholder="Geen titel" labelText="Berichtnaam" isClear={isFormClear} onChange={(inputValue) => setTitle(inputValue)} />
-            <Dropdown className="create-post__dropdown" labelText="Categorie" data={getDropdownCategories()} isClear={isFormClear} onChange={(categoryId) => setCategory(categoryId)} />
-            <ImagePicker className="create-post__image-picker" labelText="Header afbeelding" isClear={isFormClear} onChange={(imageValue) => setImage(imageValue)}>Kies bestand</ImagePicker>
-            <TextArea className="create-post__text-area" labelText="Bericht" isClear={isFormClear} onChange={(contentValue) => setContent(contentValue)} />
+        {!pending && !isEmpty(categories) && <div className="create-post__wrapper">
+            <div>
+                <h2 className="create-post__title">Plaats een blog bericht</h2>
+                <InputBox className="create-post__input" placeholder="Geen titel" labelText="Berichtnaam" isClear={isFormClear} onChange={(inputValue) => setTitle(inputValue)} />
+                <Dropdown className="create-post__dropdown" labelText="Categorie" data={getDropdownCategories()} isClear={isFormClear} onChange={(categoryId) => setCategory(categoryId)} />
+                <ImagePicker className="create-post__image-picker" labelText="Header afbeelding" isClear={isFormClear} onChange={(imageValue) => setImage(imageValue)}>Kies bestand</ImagePicker>
+                <TextArea className="create-post__text-area" labelText="Bericht" isClear={isFormClear} onChange={(contentValue) => setContent(contentValue)} />
+            </div>
             <Button className="create-post__button" isDisabled={isCreateButtonDisabled} onClick={handleClickCreateButton}>{textButton}</Button>
-        </>}
+        </div>}
     </>;
 };
 
