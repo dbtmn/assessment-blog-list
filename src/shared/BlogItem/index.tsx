@@ -1,6 +1,7 @@
 import React from "react";
 import { IMG_STORAGE_BASE } from "../../constants/ApiUrl";
 import { Post } from "../../store/posts/types";
+import { DataTestId } from "../../constants/DataTestId";
 
 import "./index.scss";
 
@@ -22,7 +23,7 @@ const BlogItem: React.FunctionComponent<ComponentProps> = (props) => {
             <span>{name}</span>
         </div>
         <div className="blog-item__content">
-            <h2>{title}</h2>
+            <h2 data-testid={DataTestId.BLOG_ITEM}>{title}</h2>
             <div>{content}</div>
         </div>
     </div>

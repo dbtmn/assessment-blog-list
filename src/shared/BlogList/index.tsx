@@ -9,8 +9,9 @@ import Error, { ErrorSize } from "../Error";
 import Button from "../../components/Button";
 import Loading from "../../components/Loading";
 import BlogItem from "../BlogItem";
-
 import { PaginationItemStyle } from "./PaginationItemStyle";
+import { DataTestId } from "../../constants/DataTestId";
+
 import "./index.scss";
 
 export enum BlogListSize {
@@ -70,6 +71,7 @@ const BlogList: React.FunctionComponent<ComponentProps> = (props) => {
                     hidePrevButton={isHidePrevious}
                     renderItem={(item) => (
                         <PaginationItem
+                            data-testid={DataTestId.PAGE}
                             sx={PaginationItemStyle}
                             components={{
                                 previous: ArrowBackIcon,
