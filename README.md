@@ -101,7 +101,7 @@ For CSS classNames, BEM naming convention is preferred.
 All implementation assumes this application gets bigger. So, I focused on splitting everything into pieces.
 
 To support clean code principle, I have implemented the components that have same functionality. (for ex. [BlogItem](https://github.com/dbtmn/assessment-blog-list/tree/main/src/shared/BlogItem))
-If a component is used in similar purpose, I implemented it with different options. (for ex. BlogList[https://github.com/dbtmn/assessment-blog-list/tree/main/src/shared/BlogList] is used in both Home and Blog pages. Home page renders it with size variant small and load more functionality, while Blog page renders it with size variant large and pagination functionality.)
+If a component is used in similar purpose, I implemented it with different options. (for ex. [BlogList](https://github.com/dbtmn/assessment-blog-list/tree/main/src/shared/BlogList) is used in both Home and Blog pages. Home page renders it with size variant small and load more functionality, while Blog page renders it with size variant large and pagination functionality.)
 
 # About features
 
@@ -112,7 +112,9 @@ User has ability to access two different pages. <br /> User accesses Home page a
         - After 3 seconds, the form is cleared, the button text is changed into default.
         - If user creates a blog post with category Tech, then right hand-side the list is refreshed.
     - User clicks Load More on the right hand-side. Next page is added. Load More button stays at the bottom and a vertical scroll bar is visible for the list.
-- User clicks Blog on the navigation. <br /> In Blog page:
+- User clicks Blog on the navigation. <br />
+
+In Blog page:
 - There are listing of blogs and pagination functionalities.
 - User has ability to change page. <br />
 
